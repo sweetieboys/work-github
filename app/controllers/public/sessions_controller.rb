@@ -25,6 +25,12 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def after_sign_in_path_for(resource)
-    # 遷移先のパス
+      root_path
+  end
+  def after_sign_in_path_for(resource)
+      new_customer_registration_path
+  end
+  def after_sign_out_path_for(resource)
+      root_path
   end
 end
