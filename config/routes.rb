@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
     resources :sessions, only: [:new,:create,:destroy]
   end
-  
+
 
   scope module: :public do
     root to: 'homes#top'
