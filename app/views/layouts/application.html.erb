@@ -14,6 +14,7 @@
         <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
+
             <a class="navbar-brand" href="/">
                <span>LOGO</span>
             </a>
@@ -23,14 +24,17 @@
 
 
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
                 <ul class="navbar-nav ml-auto">
                <% if customer_signed_in? %>
-                       <li>
+               <li class="mr-5 nav-link text-light">ようこそ、、<%= current_customer.last_name %>さん！</li>
+                       <li class="ml-5">
                          <%= link_to customers_show_path, class:"nav-link text-light" do %>
                            <i class="fa-solid fa-house"></i> mypage
                          <% end %>
                        </li>
-                       <li>
+                       <li >
                          <%= link_to items_path, class:"nav-link text-light" do %>
                            <i class="fa-solid fa-book-open"></i> Items
                          <% end %>
@@ -101,5 +105,8 @@
       </nav>
     </header>
     <%= yield %>
+    <footer>
+
+    </footer>
   </body>
 </html>
