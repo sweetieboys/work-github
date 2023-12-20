@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     resources :customers,only: [:index,:show,:edit,:update]
     resources :genres,only: [:index,:create,:edit,:update]
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
-    resources :sessions, only: [:new,:create,:destroy]
   end
 
 
@@ -35,14 +34,11 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :registrations, only: [:new, :create]
-    resources :customers, only: [:show]
     get "customers/show" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"
-    get 'customers/unsubscribe' => "customers#unsubscribe"
-    patch 'customers/withdraw' => "customers#withdraw"
+    patch 'customers/unsubscribe' => "customers#unsubscribe"
+    get 'customers/withdraw' => "customers#withdraw"
     get 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'
