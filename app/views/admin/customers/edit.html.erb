@@ -37,14 +37,14 @@
           <td>
             <%= f.radio_button :is_active, :false %>
             <%= f.label :is_active, "有効", { value: :false } %>
-            
+
             <%= f.radio_button :is_active, :true %>
             <%= f.label :is_active, "退会", { value: :true } %>
           </td>
         </tr>
         <tr>
           <td></td>
-          <td><%= f.submmit "変更を保存", class:"btn btn-success" %></td>
+          <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
         </tr>
         <% end %>
       </table>
