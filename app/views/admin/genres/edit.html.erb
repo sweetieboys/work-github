@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4>ジャンル編集</h4>
+      <h4 class="m-5">ジャンル編集</h4>
       <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
       <td>ジャンル名</td>
       <td><%= f.text_field :name %></td>

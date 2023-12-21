@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col">
       <h4 class="my-5"><%= @customer.full_name %>さんの会員詳細</h4>
-        <table>
+        <table class="table table-borderless">
           <tr>
             <th>会員ID</th>
             <td><%= @customer.id %></td>
@@ -18,7 +18,7 @@
           </tr>
           <tr>
             <th>郵便番号</th>
-            <td><%= @customer.post_cord %></td>
+            <td><%= @customer.post_code %></td>
           </tr>
           <tr>
             <th>住所</th>
@@ -38,7 +38,7 @@
           </tr>
           <tr>
             <td></td>
-            <td><%= link_to "編集する", edit_admin_customer_path, class:"btn btn-success" %>
+            <td><%= link_to "編集する", edit_admin_customer_path, class:"btn btn-success mr-5" %>
             <%= link_to "注文履歴一覧を見る", admin_path, class:"btn btn-primary" %></td>
           </tr>
         </table>
