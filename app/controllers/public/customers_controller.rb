@@ -35,7 +35,7 @@ class Public::CustomersController < ApplicationController
                                      :first_name,
                                      :last_name_kana,
                                      :first_name_kana,
-                                     :post_cord,
+                                     :post_code,
                                      :address,
                                      :telephone_number,
                                      :email

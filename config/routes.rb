@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks' => 'orders#thanks'
     resources :orders, only: [:new, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]
@@ -39,8 +41,6 @@ Rails.application.routes.draw do
     patch "customers/information" => "customers#update"
     patch 'customers/unsubscribe' => "customers#unsubscribe"
     get 'customers/withdraw' => "customers#withdraw"
-    get 'orders/confirm' => 'orders#confirm'
-    get 'orders/thanks' => 'orders#thanks'
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
 
