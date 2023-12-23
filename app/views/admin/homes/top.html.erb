@@ -16,8 +16,8 @@
           <tr>
             <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
             <td><%= order.name %></td>
-            <td><%= order.total_payment %></td>
-            <td><%= order.status %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= order.status_i18n %></td>
           </tr>
           <% end %>
         </tbody>
