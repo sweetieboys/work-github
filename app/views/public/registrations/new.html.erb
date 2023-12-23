@@ -1,8 +1,10 @@
 <div class="container">
       <h3 class="ml-5"><strong>新規会員登録</strong></h3>
-  <%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <table class="">
+
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
+
         <%= render "public/shared/error_messages", resource: resource %>
+    <table class="">
         <tr>
         <td>名前 </td>
         <td>（姓）</td>
@@ -25,7 +27,7 @@
       <tr>
         <td>郵便番号（ハイフンなし）</td>
         <td></td>
-        <td><%= f.text_field :post_cord %></td>
+        <td><%= f.text_field :post_code %></td>
       </tr>
       <tr>
         <td>住所</td>
@@ -42,7 +44,8 @@
         <td></td>
         <td>  <% if @minimum_password_length %>
               <% end %>
-              <%= f.password_field :password, autocomplete: "new-password" %></td>
+              <%= f.password_field :password, autocomplete: "new-password" %>
+        </td>
       </tr>
       <tr>
         <td>パスワード（確認用）</td>
