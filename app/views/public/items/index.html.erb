@@ -1,0 +1,41 @@
+<div class="container">
+      <div class="row">
+        <div class='col-2'>
+        <div class="border">
+        <span class="border">
+          <p>ジャンル検索</p>
+        </span>
+        </div>
+        <div class="border2">
+        <span class="border">
+          <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <td>
+              <ul>
+                <li><%= link_to genre.name, items_path(genre_id: genre.id), class: "text-secondary" %></li>
+              </ul>
+            </td>
+          </tr>
+          <% end %>
+          </tbody>
+        </span>
+        </div>
+        </div>
+      <div class="col-9">
+         <h2>商品一覧 (全<%= Item.all.count %>件)</h2>
+           <div class="container row">
+             <% @items.each do |item| %>
+            <div class="pr-5 pb-5 col-3">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_image(150,100) %>
+              <% end %>
+               <div><%= item.name %></div>
+               <div><%= item.price %></div>
+            </div>
+       <% end %>
+       </div>
+       <%= paginate @items %>
+     </div>
+    </div>
+</div>

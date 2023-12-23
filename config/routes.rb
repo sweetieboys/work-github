@@ -32,8 +32,11 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+     
+
+
 
     get "customers/show" => "customers#show"
     get "customers/information/edit" => "customers#edit"
