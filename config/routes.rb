@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :items, only: [:index, :show]
+
     get "customers/show" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"
