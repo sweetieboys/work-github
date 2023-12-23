@@ -35,8 +35,9 @@ Rails.application.routes.draw do
     get 'orders/thanks' => 'orders#thanks'
     resources :orders, only: [:new, :create, :index, :show]
     resources :items, only: [:index, :show]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]
-     
+
 
 
 
@@ -45,7 +46,9 @@ Rails.application.routes.draw do
     patch "customers/information" => "customers#update"
     patch 'customers/unsubscribe' => "customers#unsubscribe"
     get 'customers/withdraw' => "customers#withdraw"
-    get 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    get 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks' => 'orders#thanks'
+
   end
 
 

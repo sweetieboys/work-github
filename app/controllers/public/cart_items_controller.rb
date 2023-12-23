@@ -1,6 +1,5 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer! #index
-  before_action :set_cart_item, only: [:update, :destroy]
 
   def index
     @cart_item = CartItem.all
