@@ -1,7 +1,7 @@
 <div class="container">
   <dev class="row">
     <dev class="col">
-      <h4>ジャンル一覧・追加</h4>
+      <h4 class="m-5">ジャンル一覧・追加</h4>
       <%= form_with model:@genre, url: admin_genres_path do |f| %>
       <td>ジャンル名</td>
       <td><%= f.text_field :name %></td>
@@ -14,9 +14,9 @@
 <div class="container">
   <dev class="row">
     <div class="col">
-      <table>
+      <table class="table table-hover mt-5">
         <tr>
-          <th>ジャンル</th>
+          <th class="table-secondary" colspan="2">ジャンル</th>
         </tr>
         <% @genres.each do |genre| %>
         <tr>
