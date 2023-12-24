@@ -27,11 +27,4 @@ class Public::ItemsController < ApplicationController
   else
     @items = Item.none
   end
-  end
-   private
-    def item_params
-    params.require(:item).permit(:name, :introduction, :image, :genre_id, :is_active, :price)
-    end
-
-
 end
