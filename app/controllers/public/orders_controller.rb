@@ -94,11 +94,10 @@ class Public::OrdersController < ApplicationController
   def show
       @order = Order.find(params[:id])
       @order_details= OrderDetail.where(order_id: @order.id)
-      @cart_items = CartItem.where(customer_id: current_customer.id)
       ary = []
-      @cart_items.each do |cart_item|
-      ary << cart_item.item.price*cart_item.amount
+      @order_details.each do |order_detail|
+      ary << order_detail.price*order_detail.amount
       end
-      @cart_items_price = ary.sum
+      @items_price = ary.sum
   end
 end
