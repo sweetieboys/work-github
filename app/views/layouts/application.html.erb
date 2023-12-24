@@ -28,54 +28,68 @@
 
                 <ul class="navbar-nav ml-auto">
                <% if customer_signed_in? %>
-               <li class="mr-5 nav-link text-light">ようこそ、、<%= current_customer.last_name %>さん！</li>
+               <li class="mr-5 nav-link text-light">ようこそ、<%= current_customer.last_name %>さん！</li>
                        <li class="ml-5">
                          <%= link_to customers_show_path, class:"nav-link text-light" do %>
-                           <i class="fa-solid fa-house"></i> mypage
+                           <i class="fa-solid fa-house"></i> マイページ
                          <% end %>
                        </li>
                        <li >
                          <%= link_to items_path, class:"nav-link text-light" do %>
-                           <i class="fa-solid fa-book-open"></i> Items
+                           <i class="fa-solid fa-book-open"></i> 商品一覧
                          <% end %>
                        </li>
                        <li>
                          <%= link_to cart_items_path, class:"nav-link text-light" do %>
-                           <i class="fa-solid fa-book-open"></i> Cart
+                           <i class="fa-solid fa-book-open"></i> カート
                          <% end %>
                        </li>
                        <li>
                          <%= link_to destroy_customer_session_path, method: :delete, class:"nav-link text-light" do %>
-                           <i class="fa-solid fa-sign-out-alt"></i> Log out
+                           <i class="fa-solid fa-sign-out-alt"></i> ログアウト
                          <% end %>
-                       </li>
 
+                       </li>
+                       <p id="notice"><%= notice %></p>
+                      <div class="d-flex justify-content-center mb-2">
+                        <%= form_with url: item_search_path, method: :get, local: true do |f| %>
+                            <%= f.text_field :name %>
+                            <%= f.submit :search %>
+                        <% end %>
+                      </div>
                      <% elsif admin_signed_in? %>
                                <li>
                                  <%= link_to admin_items_path, class:"nav-link text-light" do %>
-                                   <i class="fa-solid fa-link"></i> Items
+                                   <i class="fa-solid fa-link"></i> 商品一覧
                                  <% end %>
                                </li>
                                <li>
                                  <%= link_to admin_customers_path, class:"nav-link text-light" do %>
-                                   <i class="fa-solid fa-link"></i> Customers
+                                   <i class="fa-solid fa-link"></i> 会員一覧
                                  <% end %>
                                </li>
                                <li>
                                  <%= link_to admin_path, class:"nav-link text-light" do %>
-                                   <i class="fa-solid fa-link"></i> Orders
+                                   <i class="fa-solid fa-link"></i> 注文履歴一覧
                                  <% end %>
                                </li>
                                <li>
                                  <%= link_to admin_genres_path, class:"nav-link text-light" do %>
-                                   <i class="fa-solid fa-link"></i> Genres
+                                   <i class="fa-solid fa-link"></i> ジャンル一覧
                                  <% end %>
                                </li>
                                <li>
                                  <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link text-light" do %>
-                                   <i class="fa-solid fa-sign-out-alt"></i> Log out
+                                   <i class="fa-solid fa-sign-out-alt"></i> ログアウト
                                  <% end %>
                                </li>
+                                     <p id="notice"><%= notice %></p>
+                                  <div class="d-flex justify-content-center mb-2">
+                                    <%= form_with url:  admin_item_search_path, method: :get, local: true do |f| %>
+                                        <%= f.text_field :name %>
+                                        <%= f.submit :search %>
+                                    <% end %>
+                                  </div>
 
                              <% else %>
                                    <li>
@@ -85,17 +99,17 @@
                                    </li>
                                    <li>
                                      <%= link_to items_path, class:"nav-link text-light" do %>
-                                       <i class="fa-solid fa-book-open"></i> Items
+                                       <i class="fa-solid fa-book-open"></i> 商品一覧
                                      <% end %>
                                    </li>
                                    <li>
                                      <%= link_to new_customer_registration_path, class:"nav-link text-light" do %>
-                                       <i class="fa-solid fa-user-plus"></i> Sign up
+                                       <i class="fa-solid fa-user-plus"></i> 新規登録
                                      <% end %>
                                    </li>
                                    <li>
                                      <%= link_to new_customer_session_path, class:"nav-link text-light" do %>
-                                       <i class="fa-solid fa-sign-in-alt"></i> Log in
+                                       <i class="fa-solid fa-sign-in-alt"></i> ログイン
                                      <% end %>
                                    </li>
                               <% end %>

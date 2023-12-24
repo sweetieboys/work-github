@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>商品検索結果</h1>
+      <h2>(全<%= @items.count %>件)</h2>
+      <% if [] != @items %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜き価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name,admin_item_path(item.id) %></td>
+            <td><%= item.price %></td>
+            <td><%= item.genre_id %></td>
+            <td><span style="color:green;"><%= item.is_active? ? '販売中' : '販売停止中' %></td>
+          </tr>
+         <% end %>
+        </tbody>
+      </table>
+      <% else %>
+      <h1 class= text-center>0件でした。</h1>
+      <% end %>
+     </div>
+  </div>
+</div>
+

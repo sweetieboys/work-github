@@ -19,11 +19,14 @@ Rails.application.routes.draw do
 
  namespace :admin do
     get "/" => "homes#top"
+    get "item/search" => "items#search"
     resources :order_details,only: [:update]
     resources :order,only: [:show,:update]
     resources :customers,only: [:index,:show,:edit,:update]
     resources :genres,only: [:index,:create,:edit,:update]
-    resources :items, only: [:index,:new,:create,:show,:edit,:update]
+    resources :items, only: [:index,:new,:create,:show,:edit,:update] do
+
+    end
   end
 
 
@@ -36,10 +39,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create]
-     
 
-
-
+    get "item/search" => "items#search"
     get "customers/show" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"

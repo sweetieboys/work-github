@@ -1,6 +1,19 @@
 class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   belongs_to :genre
+
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Item.where(title: content)
+    elsif method == 'forward'
+      Item.where('title LIKE ?', content + '%')
+    elsif method == 'backward'
+      Item.where('title LIKE ?', '%' + content)
+    else
+      Item.where('title LIKE ?', '%' + content + '%')
+    end
+  end
   has_one_attached :image
   def get_image(width,height)
     unless image.attached?
