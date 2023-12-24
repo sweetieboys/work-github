@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get "/" => "homes#top"
     get "item/search" => "items#search"
     resources :order_details,only: [:update]
-    resources :order,only: [:show,:update]
+    resources :orders,only: [:show,:update]
     resources :customers,only: [:index,:show,:edit,:update]
     resources :genres,only: [:index,:create,:edit,:update]
     resources :items, only: [:index,:new,:create,:show,:edit,:update] do
@@ -33,20 +33,22 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    get "item/search" => "items#search"
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
     resources :orders, only: [:new, :create, :index, :show]
     resources :items, only: [:index, :show]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]
-
-    get "item/search" => "items#search"
     get "customers/show" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"
     patch 'customers/unsubscribe' => "customers#unsubscribe"
     get 'customers/withdraw' => "customers#withdraw"
-    get 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    get 'orders/confirm' => 'orders#confirm'
+    get 'orders/thanks' => 'orders#thanks'
+
   end
 
 
