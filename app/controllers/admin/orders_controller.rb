@@ -1,11 +1,11 @@
 class Admin::OrdersController < ApplicationController
-
+  
   def show
     @order = Order.find(params[:id])
     @selected_status = @order.status
     @order_detail = @order.order_details
   end
-
+  
   def update
     @order = Order.find(params[:id])
     @order_details = @order.order_details
@@ -16,10 +16,10 @@ class Admin::OrdersController < ApplicationController
       end
       redirect_to request.referer
   end
-
+  
   private
   def order_params
     params.require(:order).permit(:status)
   end
-
+  
 end

@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
       #以下、商品合計額の計算
       ary = []
       @cart_items.each do |cart_item|
-        ary << cart_item.item.price*cart_item.amount
+        ary << (cart_item.item.price*1.1*cart_item.amount).floor
       end
       @cart_items_price = ary.sum
 
