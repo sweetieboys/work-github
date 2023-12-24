@@ -20,17 +20,11 @@ class Public::ItemsController < ApplicationController
       @items = @genre.items
     end
    end
+  
   def search
   if params[:name].present?
     @items = Item.where('name LIKE ?', "%#{params[:name]}%")
   else
     @items = Item.none
   end
-  end
-   private
-    def item_params
-    params.require(:item).permit(:name, :introduction, :image, :genre_id, :is_active, :price)
-    end
-
-
 end
