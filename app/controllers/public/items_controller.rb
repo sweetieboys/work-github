@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @items = Item.page(params[:page]).per(8)
     @genres = Genre.all
@@ -18,10 +19,17 @@ class Public::ItemsController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @items = @genre.items
     end
-
+  def search
+  if params[:name].present?
+    @items = Item.where('name LIKE ?', "%#{params[:name]}%")
+  else
+    @items = Item.none
+  end
   end
    private
     def item_params
     params.require(:item).permit(:name, :introduction, :image, :genre_id, :is_active, :price)
     end
+
+
 end

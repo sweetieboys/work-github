@@ -19,17 +19,21 @@ Rails.application.routes.draw do
 
  namespace :admin do
     get "/" => "homes#top"
+    get "item/search" => "items#search"
     resources :order_details,only: [:update]
-    resources :order,only: [:show,:update]
+    resources :orders,only: [:show,:update]
     resources :customers,only: [:index,:show,:edit,:update]
     resources :genres,only: [:index,:create,:edit,:update]
-    resources :items, only: [:index,:new,:create,:show,:edit,:update]
+    resources :items, only: [:index,:new,:create,:show,:edit,:update] do
+
+    end
   end
 
 
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    get "item/search" => "items#search"
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/thanks' => 'orders#thanks'
@@ -37,10 +41,6 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]
-
-
-
-
     get "customers/show" => "customers#show"
     get "customers/information/edit" => "customers#edit"
     patch "customers/information" => "customers#update"

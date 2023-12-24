@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <h1>商品検索結果</h1>
+         <h2>商品一覧 (全<%= @items.count %>件)</h2>
+         <% if [] != @items %>
+           <div class="container row">
+             <% @items.each do |item| %>
+            <div class="pr-5 pb-5 col-3">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_image(150,100) %>
+              <% end %>
+               <div><%= item.name %></div>
+               <div><%= item.price %></div>
+            </div>
+       <% end %>
+       <% else %>
+       <h1 class= text-center>0件でした</h1>。
+       <% end %>
+       </div>
+     </div>
+   </div>
+</div>

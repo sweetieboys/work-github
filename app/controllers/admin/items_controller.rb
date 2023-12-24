@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+    before_action :authenticate_admin!
   def index
     @items = Item.page(params[:page])
   end
@@ -33,6 +34,13 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
+  def search
+    if params[:name].present?
+      @items = Item.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @items = Item.none
+    end
+  end
   private
   def item_params
     params.require(:item).permit(:name, :introduction, :image, :genre_id, :is_active, :price)
