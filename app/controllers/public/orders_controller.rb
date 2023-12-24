@@ -95,8 +95,13 @@ class Public::OrdersController < ApplicationController
       @order = Order.find(params[:id])
       @order_details= OrderDetail.where(order_id: @order.id)
       ary = []
+<<<<<<< Updated upstream
       @order_details.each do |order_detail|
       ary << order_detail.price*order_detail.amount
+=======
+      @cart_items.each do |cart_item|
+      ary << cart_item.price*cart_item.amount
+>>>>>>> Stashed changes
       end
       @items_price = ary.sum
   end
