@@ -71,7 +71,7 @@ class Public::OrdersController < ApplicationController
         @order.name = params[:order][:new_name]
     end
     if @order.save!
-      if @order.status == 0
+      if @order.status == "waiting"
         @cart_items.each do |cart_item|
           OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
         end

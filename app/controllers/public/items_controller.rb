@@ -19,15 +19,12 @@ class Public::ItemsController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @items = @genre.items
     end
-  end
-
+   end
+  
   def search
-    if params[:name].present?
-      @items = Item.where('name LIKE ?', "%#{params[:name]}%")
-    else
-      @items = Item.none
-    end
+  if params[:name].present?
+    @items = Item.where('name LIKE ?', "%#{params[:name]}%")
+  else
+    @items = Item.none
   end
-
-
 end
