@@ -7,8 +7,8 @@ class Admin::OrdersController < ApplicationController
   end
   
   def update
-    @order = Order.find(parems[:id])
-    @order_details = @order.ordere_details
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
     @order.status = params[:status]
     @order.update(order_params)
       if @order.status == "confirmation"
