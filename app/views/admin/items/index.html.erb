@@ -26,7 +26,7 @@
             <td><%= item.id %></td>
             <td><%= link_to item.name,admin_item_path(item.id) %></td>
             <td><%= item.price %></td>
-            <td><%= item.genre_id %></td>
+            <td><%= item.genre.name %></td>
             <td><span style="color:green;"><%= item.is_active? ? '販売中' : '販売停止中' %></td>
           </tr>
          <% end %>
